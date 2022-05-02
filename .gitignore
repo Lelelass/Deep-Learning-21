@@ -104,3 +104,10 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+#Own
+
+folder_structure.py
+/experiment_small_data
+/experiment_tiny_data
+/original_data
