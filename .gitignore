@@ -107,6 +107,7 @@ GitHub.sublime-settings
 
 #Own
 
+.DS_Store
 folder_structure.py
 /experiment_small_data
 /experiment_tiny_data
