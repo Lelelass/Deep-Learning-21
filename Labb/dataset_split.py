@@ -1,4 +1,13 @@
-def Complete_split(data):
+import pandas as pd
+
+def Complete_split(df):
+    animals = ('dog', 'cat')
+    for animal in animals:
+        select_sample_by_type(df, animal, 800)
+
+def Read_and_one_hot_dataframe(dataframe):
+
+    pd.get_dummies(df, columns = ['label'])
     pass
 
 def select_sample_by_type(dataframe, animal:str, sample_size:int, random_state=42):
