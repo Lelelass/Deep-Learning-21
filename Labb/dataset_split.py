@@ -1,9 +1,20 @@
 import pandas as pd
+import os
 
 def Complete_split(df):
     animals = ('dog', 'cat')
     for animal in animals:
         select_sample_by_type(df, animal, 800)
+
+def get_train_from_path():
+    original_train_dir = os.path.abspath("./original_data/train/train")
+    train_pictures = os.listdir(original_train_dir)
+    return train_pictures
+
+def get_filename_dataframe(folder_files_list : list):
+    df = pd.DataFrame(folder_files_list, columns = ['filename'])
+    df['label'] = df.filename.str[:3]
+    return df
 
 def Read_and_one_hot_dataframe(dataframe):
 
