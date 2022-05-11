@@ -6,20 +6,21 @@ def Complete_split(df):
     for animal in animals:
         select_sample_by_type(df, animal, 800)
 
-def get_train_from_path():
-    original_train_dir = os.path.abspath("./original_data/train/train")
-    train_pictures = os.listdir(original_train_dir)
+def get_train_from_path(path:str):
+    #original_train_dir = os.path.abspath("./original_data/train/train")
+    train_pictures = os.listdir(path)
     return train_pictures
 
-def get_filename_dataframe(folder_files_list : list):
+def gen_filename_dataframe(folder_files_list : list):
+    """Takes a list of files in a folder and returns a dataframe with filenames,
+     and corresponding animal label; one_hot encoded"""
     df = pd.DataFrame(folder_files_list, columns = ['filename'])
-    df['label'] = df.filename.str[:3]
+    #Add error hantering ?
+    df['label'] = df.filename.str[:3] #Obs : only functions as 'cat' and 'dog' are both 3 char strings.
+    df = pd.get_dummies(df, columns = ['label'], prefix=[''])
     return df
 
-def Read_and_one_hot_dataframe(dataframe):
 
-    pd.get_dummies(df, columns = ['label'])
-    pass
 
 def select_sample_by_type(dataframe, animal:str, sample_size:int, random_state=42):
     """Returns a datframe filtered by animal label and sampled to a specified quantity,
