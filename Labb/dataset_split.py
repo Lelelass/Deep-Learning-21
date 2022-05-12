@@ -20,10 +20,10 @@ def get_filenames_from_path(path:str):
 def gen_filename_dataframe(folder_files_list : list):
     """Reads a list of files in a folder and returns a dataframe with filenames,
      and corresponding animal label; one_hot encoded"""
+    labels ={'dog' :0, 'cat':1}
     df = pd.DataFrame(folder_files_list, columns = ['filename'])
-    #Add error hantering ?
     df['label'] = df.filename.str[:3] #Obs : only functions as 'cat' and 'dog' are both 3 char strings.
-    df = pd.get_dummies(df, columns = ['label'], prefix=[''])
+    df['label'] = df['label'].map(labels)
     return df
 
 
