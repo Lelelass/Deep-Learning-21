@@ -1,12 +1,15 @@
-def display_images(data, nrows=2, ncols=5, figsize=(12, 4)):
+import matplotlib.pyplot as plt 
+
+
+def display_images(filenames_dataframe, directory:str, nrows=2, ncols=5, figsize=(12, 4)):
 
     fig, axes = plt.subplots(nrows, ncols, figsize = figsize)
     
 
     for i, ax in enumerate(axes.flatten()):
-        filename = data.iloc[i,0]
-        label = data.iloc[i,1] #Manage one hot encoding
-        image = plt.imread(f"{original_train_dir}/{filename}")
+        filename = filenames_dataframe.iloc[i,0]
+        label = filenames_dataframe.iloc[i,1] #Manage one hot encoding
+        image = plt.imread(f"{directory}/{filename}")
         ax.imshow(image)
         ax.axis("off")
         if label == 0:
