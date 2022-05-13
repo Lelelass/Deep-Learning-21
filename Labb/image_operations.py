@@ -22,6 +22,15 @@ def display_images(filenames_dataframe, directory:str, nrows=2, ncols=5, figsize
 
     fig.subplots_adjust(wspace=0.3, hspace=.1, bottom=0)
 
+def display_images_array(array, nrows=2, ncols=5, figsize=(12, 4)):
+
+    fig, axes = plt.subplots(nrows, ncols, figsize = figsize)
+    
+    for i, ax in enumerate(axes.flatten()):
+        ax.imshow(array[i])
+        ax.axis("off")
+
+
 def extract_dimesion_distribution(df, directory:str):
     """Reads pictures from filepath column of dataframe,
        extracts width and height pixel values and scatter plots.
