@@ -112,7 +112,7 @@ folder_structure.py
 /experiment_small_data
 /experiment_tiny_data
 /original_data
-/saved_keras_models
+Labb/saved_keras_models
 *.jpg
 *.pb
 *.data-00000-of-00001
