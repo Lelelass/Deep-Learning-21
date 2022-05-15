@@ -8,9 +8,9 @@ def Complete_set_split_filenames(df, small_split:tuple):
         for split in small_split:
             small_train_sets_by_animal.append(select_sample_by_type(df, animal, split))
     
-    small_train_set = pd.concat([small_train_sets_by_animal[0], small_train_sets_by_animal[3]], axis = 0)
-    small_val_set = pd.concat([small_train_sets_by_animal[1], small_train_sets_by_animal[4]], axis = 0)
-    small_test_set = pd.concat([small_train_sets_by_animal[2], small_train_sets_by_animal[5]], axis = 0)
+    small_train_set = pd.concat([small_train_sets_by_animal[0], small_train_sets_by_animal[3]], axis = 0).sample(frac=1) #The joined balanced datasets are shuffled by sample method
+    small_val_set = pd.concat([small_train_sets_by_animal[1], small_train_sets_by_animal[4]], axis = 0).sample(frac=1)
+    small_test_set = pd.concat([small_train_sets_by_animal[2], small_train_sets_by_animal[5]], axis = 0).sample(frac=1)
     return small_train_set, small_val_set, small_test_set 
 
 def get_filenames_from_path(path:str):
