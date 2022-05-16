@@ -31,10 +31,10 @@ def display_images_array(array, nrows=2, ncols=5, figsize=(12, 4)):
         ax.axis("off")
 
 
-def extract_dimesion_distribution(df, directory:str):
+def extract_dimesion_distribution(df, directory:str) -> tuple:
     """Reads pictures from filepath column of dataframe,
-       extracts width and height pixel values and scatter plots.
-       Also returns a list of picture sizes tuples, and of large pictures"""
+       extracts width and height pixel values.
+       Returns a list of picture sizes tuples, and of large pictures"""
     all_dims =[]
     big_img = []
     for i, path in df['filename'].items():
@@ -43,13 +43,11 @@ def extract_dimesion_distribution(df, directory:str):
         if img.shape[0] > 700 or img.shape[1] > 700:
             big_img.append(df['filename'][i])
     
-    #sns.jointplot(data=train_pictures_one_hot_with_dim, x='width', y='height')
-    #plt.scatter(*zip(*all_dims))
-    #plt.show()
     print(f"oversized pictures : {big_img}")
     return all_dims, big_img
 
-def read_and_resize_images(df, directory:str, target_size:tuple):
+def read_and_resize_images(df, directory:str, target_size:tuple) -> np.array:
+    """Reads images from filepaths taken from a dataframe, resizes each image to the set target and returns an array of resized images"""
     images = []
     for _, path in df['filename'].items():
         img = plt.imread(f"{directory}/{path}")
